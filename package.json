@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "aws-cdk": "^2.146.0"
-  }
+  "dependencies": {}
 }
