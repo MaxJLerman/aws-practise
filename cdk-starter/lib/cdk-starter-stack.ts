@@ -1,5 +1,5 @@
 import * as cdk from "aws-cdk-lib";
-import { CfnOutput, Duration } from "aws-cdk-lib";
+import { CfnOutput, CfnParameter, Duration } from "aws-cdk-lib";
 import { Bucket, CfnBucket } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 
@@ -35,11 +35,20 @@ export class CdkStarterStack extends cdk.Stack {
       },
     });
 
+    //? <duration of expiration> lifecycle rull parameter
+    const duration = new CfnParameter(this, "duration", {
+      type: "Number",
+      description: "Duration in days for object expiration",
+      default: 6,
+      minValue: 1,
+      maxValue: 10,
+    });
+
     //* 2. L2 construct - more flexible configuration
     const myL2Bucket = new Bucket(this, "MyL2Bucket", {
       lifecycleRules: [
         {
-          expiration: Duration.days(2), //? objects expire 2 days after creation
+          expiration: Duration.days(duration.valueAsNumber),
         },
       ],
     });
