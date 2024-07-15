@@ -62,7 +62,7 @@ export class CdkStarterStack extends cdk.Stack {
        */
     });
 
-    //* 3. L3 construct - using custom class that extends Construct class
+    //* 3. L3 construct - using custom class that extends Construct class (it's still a reference to an L2 construct)
     new L3Bucket(this, "MyL3Bucket", 3);
   }
 }
