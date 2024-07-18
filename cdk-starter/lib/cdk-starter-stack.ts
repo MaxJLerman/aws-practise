@@ -35,7 +35,7 @@ export class CdkStarterStack extends cdk.Stack {
       },
     });
 
-    //? <duration of expiration> lifecycle rull parameter
+    //? <duration of expiration> lifecycle rule parameter
     const duration = new CfnParameter(this, "duration", {
       type: "Number",
       description: "Duration in days for object expiration",
